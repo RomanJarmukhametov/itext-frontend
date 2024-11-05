@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const roboto = Roboto({
-  subsets: ['latin'],
+  subsets: ['latin', 'cyrillic-ext', 'greek'],
   display: 'swap',
   weight: ['100', '300', '400', '500', '700', '900'],
 });
