@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import '@/assets/styles/globals.css';
+import { getNavigationData } from '@/data/loaders';
+import Header from '@/components/layout/Header';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,14 +15,20 @@ const roboto = Roboto({
   weight: ['100', '300', '400', '500', '700', '900'],
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const navigationData = await getNavigationData();
+  console.dir(navigationData, { depth: null });
+
   return (
     <html lang="ru" className={`${roboto.className}  antialiased`}>
-      <body>{children}</body>
+      <body>
+        <Header navigationData={navigationData.data} />
+        {children}
+      </body>
     </html>
   );
 }

@@ -29,7 +29,10 @@ export async function getNavigationData() {
   url.search = qs.stringify({
     populate: {
       navItem: true,
-      image: {
+      logoBlack: {
+        fields: ['url', 'alternativeText'],
+      },
+      logoWhite: {
         fields: ['url', 'alternativeText'],
       },
     },

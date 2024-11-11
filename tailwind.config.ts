@@ -13,11 +13,18 @@ const config: Config = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
-      },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        coolGray: {
+          50: '#F7F8F9',
+          100: '#EEF0F3',
+          200: '#D5DAE1',
+          300: '#BBC3CF',
+          400: '#8896AB',
+          500: '#556987',
+          600: '#4D5F7A',
+          700: '#404F65',
+          800: '#333F51',
+          900: '#2A3342',
+        },
       },
     },
   },
