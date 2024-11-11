@@ -31,6 +31,11 @@ export default function RatingWidgetSmall() {
       sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"
       className="glowEffect" // Applying the glow effect class
       title="2gis.kz Rating"
+      style={{
+        border: '2px solid transparent',
+        borderRadius: '4px',
+        cursor: 'pointer', // Indicates clickability
+      }}
     ></iframe>
   );
 }
