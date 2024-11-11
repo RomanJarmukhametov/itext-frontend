@@ -27,3 +27,12 @@
   background-image: url('/images/pattern-white.svg');
   background-position: center;
 }
+
+.glowEffect {
+  transition: box-shadow 0.3s ease;
+}
+
+.glowEffect:hover {
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.6); /* blue-500 color shadow */
+  border-color: #3b82f6;
+}

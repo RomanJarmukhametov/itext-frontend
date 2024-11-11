@@ -26,10 +26,11 @@ export default function RatingWidgetSmall() {
   return (
     <iframe
       id="small_light_70000001024919567"
-      frameBorder="0"
       width="114px"
       height="28px"
       sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"
+      className="glowEffect" // Applying the glow effect class
+      title="2gis.kz Rating"
     ></iframe>
   );
 }
