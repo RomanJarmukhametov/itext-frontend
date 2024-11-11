@@ -22,3 +22,8 @@
   background-color: #3b82f6;
   animation: slideInBorder 0.4s ease forwards;
 }
+
+.bg-pattern-white {
+  background-image: url('/images/pattern-white.svg');
+  background-position: center;
+}

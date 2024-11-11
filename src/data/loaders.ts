@@ -40,3 +40,25 @@ export async function getNavigationData() {
 
   return await fetchData(url.href);
 }
+
+export async function getHomePageData() {
+  const url = new URL('/api/home-page', baseUrl);
+
+  url.search = qs.stringify({
+    populate: {
+      blocks: {
+        on: {
+          'layout.hero': {
+            populate: {
+              image: {
+                fields: ['url', 'alternativeText'],
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+
+  return await fetchData(url.href);
+}

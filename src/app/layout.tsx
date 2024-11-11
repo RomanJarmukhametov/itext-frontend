@@ -21,7 +21,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const navigationData = await getNavigationData();
-  console.dir(navigationData, { depth: null });
 
   return (
     <html lang="ru" className={`${roboto.className}  antialiased`}>
