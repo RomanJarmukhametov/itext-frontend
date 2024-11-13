@@ -9,6 +9,7 @@ const blockComponents = {
   'layout.hero': HeroHomepage,
   'layout.features': Features,
   'layout.numbers': Numbers,
+  'layout.advantages': Advantages,
 };
 
 function blockRenderer(block: any) {
@@ -23,10 +24,5 @@ export default async function Home() {
 
   const { blocks } = strapiData?.data || [];
 
-  return (
-    <>
-      {blocks.map(blockRenderer)}
-      <Advantages />
-    </>
-  );
+  return <>{blocks.map(blockRenderer)}</>;
 }

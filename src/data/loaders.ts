@@ -65,6 +65,11 @@ export async function getHomePageData() {
               stats: true,
             },
           },
+          'layout.advantages': {
+            populate: {
+              card: true,
+            },
+          },
         },
       },
     },
