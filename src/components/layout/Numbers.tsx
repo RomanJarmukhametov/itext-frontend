@@ -21,7 +21,7 @@ export default function Numbers({ data }: { readonly data: NumbersProps }) {
     <section className="py-20 xl:pt-24 xl:pb-32 bg-white bg-pattern-white">
       <div className="container px-4 mx-auto">
         <div className="text-center">
-          <span className="inline-block py-px px-2 mb-4 text-xs leading-5 text-blue-500 bg-blue-100 font-medium uppercase rounded-9xl">
+          <span className="inline-block py-px px-2 mb-4 text-xs leading-5 text-blue-500 bg-blue-100 font-medium uppercase rounded-full shadow-sm">
             {tagline}
           </span>
           <h2 className="mb-4 text-3xl md:text-4xl font-bold leading-relaxed tracking-wide">

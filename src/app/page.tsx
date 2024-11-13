@@ -4,12 +4,14 @@ import HeroHomepage from '@/components/layout/HeroHomepage';
 import Features from '@/components/layout/Features';
 import Numbers from '@/components/layout/Numbers';
 import Advantages from '@/components/layout/Advantages';
+import Logos from '@/components/layout/Logos';
 
 const blockComponents = {
   'layout.hero': HeroHomepage,
   'layout.features': Features,
   'layout.numbers': Numbers,
   'layout.advantages': Advantages,
+  'layout.logos': Logos,
 };
 
 function blockRenderer(block: any) {

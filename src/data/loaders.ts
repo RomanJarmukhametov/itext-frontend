@@ -70,6 +70,13 @@ export async function getHomePageData() {
               card: true,
             },
           },
+          'layout.logos': {
+            populate: {
+              image: {
+                fields: ['url', 'alternativeText'],
+              },
+            },
+          },
         },
       },
     },
