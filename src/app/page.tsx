@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getHomePageData } from '@/data/loaders';
 import HeroHomepage from '@/components/layout/HeroHomepage';
+import Features from '@/components/layout/Features';
 
 const blockComponents = {
   'layout.hero': HeroHomepage,
+  'layout.features': Features,
 };
 
 function blockRenderer(block: any) {
