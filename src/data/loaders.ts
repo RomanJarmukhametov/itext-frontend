@@ -60,6 +60,11 @@ export async function getHomePageData() {
               card: true,
             },
           },
+          'layout.numbers': {
+            populate: {
+              stats: true,
+            },
+          },
         },
       },
     },

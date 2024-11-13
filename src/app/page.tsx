@@ -2,10 +2,12 @@
 import { getHomePageData } from '@/data/loaders';
 import HeroHomepage from '@/components/layout/HeroHomepage';
 import Features from '@/components/layout/Features';
+import Numbers from '@/components/layout/Numbers';
 
 const blockComponents = {
   'layout.hero': HeroHomepage,
   'layout.features': Features,
+  'layout.numbers': Numbers,
 };
 
 function blockRenderer(block: any) {
