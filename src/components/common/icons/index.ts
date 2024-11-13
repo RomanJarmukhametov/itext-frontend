@@ -1,3 +1,9 @@
 export { default as ProfessionalIcon } from './ProfessionalIcon';
 export { default as SpecializedIcon } from './SpecializedIcon';
 export { default as AutomationIcon } from './AutomationIcon';
+export { default as ExperienceIcon } from './ExperienceIcon';
+export { default as DeadlineIcon } from './DeadlineIcon';
+export { default as PrivacyIcon } from './PrivacyIcon';
+export { default as SupportIcon } from './SupportIcon';
+export { default as SolutionsIcon } from './SolutionsIcon';
+export { default as CultureIcon } from './CultureIcon';
