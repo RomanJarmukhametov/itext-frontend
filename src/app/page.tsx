@@ -6,6 +6,7 @@ import Features from '@/components/layout/Features';
 import Numbers from '@/components/layout/Numbers';
 import Advantages from '@/components/layout/Advantages';
 import Logos from '@/components/layout/Logos';
+import Reviews from '@/components/layout/Reviews';
 
 interface SafeMetadata {
   title: string;
@@ -18,6 +19,7 @@ const blockComponents = {
   'layout.numbers': Numbers,
   'layout.advantages': Advantages,
   'layout.logos': Logos,
+  'layout.reviews': Reviews,
 };
 
 function blockRenderer(block: any) {

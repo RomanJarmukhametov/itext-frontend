@@ -77,6 +77,9 @@ export async function getHomePageData() {
               },
             },
           },
+          'layout.reviews': {
+            populate: true,
+          },
         },
       },
     },

@@ -44,3 +44,26 @@
   box-shadow: 0 0 10px rgba(59, 130, 246, 0.6); /* soft blue glow on hover */
   border-color: #3b82f6; /* blue-500 border color */
 }
+
+.responsive-iframe {
+  border: 0;
+  border-radius: 8px;
+  margin: 0 auto;
+  display: block; /* Center the iframe */
+
+  /* Default (desktop) */
+  width: 528px;
+  height: 824px;
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    width: 400px;
+    height: 624px;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    width: 320px;
+    height: 512px;
+  }
+}
