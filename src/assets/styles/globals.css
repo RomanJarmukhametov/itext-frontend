@@ -33,6 +33,11 @@
   background-position: center;
 }
 
+.bg-pattern-dark {
+  background-image: url('/images/pattern-dark.svg');
+  background-position: center;
+}
+
 /* Glow effect for the iframe */
 .glowEffect {
   transition:
