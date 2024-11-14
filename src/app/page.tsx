@@ -8,6 +8,7 @@ import Advantages from '@/components/layout/Advantages';
 import Logos from '@/components/layout/Logos';
 import Reviews from '@/components/layout/Reviews';
 import Cta from '@/components/layout/Cta';
+import AnimatedSection from '@/components/common/AnimatedSection';
 
 interface SafeMetadata {
   title: string;
@@ -26,7 +27,11 @@ const blockComponents = {
 
 function blockRenderer(block: any) {
   const Component = blockComponents[block.__component as keyof typeof blockComponents];
-  return Component ? <Component key={block.id} data={block} /> : null;
+  return Component ? (
+    <AnimatedSection key={block.id}>
+      <Component data={block} />
+    </AnimatedSection>
+  ) : null;
 }
 
 export default async function Home() {
