@@ -49,7 +49,7 @@ export default function Header({ navigationData }: { navigationData: NavigationD
           </Link>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          {navigationData.navItem.map((item) => (
+          {navigationData.navItem.slice(0, -1).map((item) => (
             <Link
               key={item.id}
               href={item.link}
@@ -112,7 +112,7 @@ export default function Header({ navigationData }: { navigationData: NavigationD
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-coolGray-500/10">
               <div className="space-y-2 py-6">
-                {navigationData.navItem.map((item) => (
+                {navigationData.navItem.slice(0, -1).map((item) => (
                   <Link
                     key={item.id}
                     href={item.link}
