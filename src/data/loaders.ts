@@ -80,6 +80,9 @@ export async function getHomePageData() {
           'layout.reviews': {
             populate: true,
           },
+          'layout.cta': {
+            populate: true,
+          },
         },
       },
     },
