@@ -1,3 +1,4 @@
+import Heading from '@/components/common/Heading';
 import Tagline from '@/components/common/Tagline';
 import BodyText from '@/components/common/BodyText';
 import RatingWidgetLarge from '@/components/common/RatingWidgetLarge';
@@ -18,12 +19,9 @@ export default function Reviews({ data }: { readonly data: ReviewsProps }) {
       <div className="container px-4 mx-auto text-center">
         <div className="mb-16">
           <Tagline text={tagline} />
-          <h2
-            id="reviews-heading"
-            className="mb-4 text-3xl md:text-4xl font-bold leading-relaxed tracking-wide"
-          >
+          <Heading level={2} id="reviews-heading">
             {heading}
-          </h2>
+          </Heading>
           <BodyText text={description} variant="large" />
         </div>
         <div className="flex justify-center">

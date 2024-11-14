@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { StrapiImage } from '@/components/common/StrapiImage';
 import RatingWidgetSmall from '@/components/common/RatingWidgetSmall';
+import Heading from '@/components/common/Heading';
 import BodyText from '@/components/common/BodyText';
 
 interface ImageProps {
@@ -42,12 +43,9 @@ export default function HeroHomepage({ data }: { readonly data: HeroProps }) {
               <span className="inline-block py-px px-2 mb-4 text-xs leading-5 text-white bg-blue-500 uppercase rounded-full">
                 {tagline}
               </span>
-              <h1
-                id="hero-heading"
-                className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight"
-              >
+              <Heading level={1} id="hero-heading">
                 {heading}
-              </h1>
+              </Heading>
               <BodyText text={description} variant="large" className="mb-8" />
               <div className="flex flex-wrap">
                 <div className="w-full md:w-auto py-1 md:py-0 md:mr-4">

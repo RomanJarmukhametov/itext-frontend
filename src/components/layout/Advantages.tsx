@@ -1,4 +1,5 @@
 import { getIcon } from '@/lib/icons';
+import Heading from '@/components/common/Heading';
 import Tagline from '@/components/common/Tagline';
 import BodyText from '@/components/common/BodyText';
 
@@ -30,12 +31,10 @@ export default function Advantages({ data }: { readonly data: AdvantagesProps })
       <div className="container px-4 mx-auto">
         <div className="md:max-w-4xl mb-12 mx-auto text-center">
           <Tagline text={tagline} />
-          <h2
-            id="advantages-heading"
-            className="mb-4 text-3xl md:text-4xl font-bold leading-relaxed tracking-wide"
-          >
+          <Heading level={2} id="advantages-heading">
             {heading}
-          </h2>
+          </Heading>
+
           <BodyText text={description} variant="large" />
         </div>
         <div className="flex flex-wrap -mx-4">
@@ -43,7 +42,7 @@ export default function Advantages({ data }: { readonly data: AdvantagesProps })
             <div key={item.id} className="w-full md:w-1/2 lg:w-1/3 px-4">
               <div className="h-full p-8 text-center hover:bg-white hover:shadow-xl hover:scale-105 rounded-md transition duration-200">
                 {getIcon(item.icon)}
-                <h3 className="mb-4 text-xl md:text-2xl leading-tight font-bold">{item.heading}</h3>
+                <Heading level={3}>{item.heading}</Heading>
                 <BodyText text={item.description} variant="normal" />
               </div>
             </div>

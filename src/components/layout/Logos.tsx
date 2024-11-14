@@ -1,4 +1,5 @@
 import { StrapiImage } from '@/components/common/StrapiImage';
+import Heading from '@/components/common/Heading';
 import Tagline from '@/components/common/Tagline';
 import BodyText from '@/components/common/BodyText';
 interface ImageProps {
@@ -28,12 +29,9 @@ export default function Logos({ data }: { readonly data: LogosProps }) {
       <div className="container px-4 mx-auto">
         <div className="mb-8 text-center">
           <Tagline text={tagline} />
-          <h2
-            id="logos-heading"
-            className="mb-4 text-3xl md:text-4xl font-bold leading-relaxed tracking-wide"
-          >
+          <Heading level={2} id="logos-heading">
             {heading}
-          </h2>
+          </Heading>
           <BodyText text={description} variant="large" />
         </div>
         <div className="flex flex-wrap justify-center -mx-4">
