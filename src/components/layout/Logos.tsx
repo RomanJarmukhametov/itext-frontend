@@ -1,5 +1,5 @@
 import { StrapiImage } from '@/components/common/StrapiImage';
-
+import Tagline from '@/components/common/Tagline';
 interface ImageProps {
   id: number;
   url: string;
@@ -26,9 +26,7 @@ export default function Logos({ data }: { readonly data: LogosProps }) {
     <section className="py-20 xl:pt-24 bg-white bg-pattern-white" aria-labelledby="logos-heading">
       <div className="container px-4 mx-auto">
         <div className="mb-8 text-center">
-          <span className="inline-block py-px px-2 mb-4 text-xs leading-5 text-blue-500 bg-blue-100 font-medium uppercase rounded-full shadow-sm">
-            {tagline}
-          </span>
+          <Tagline text={tagline} />
           <h2 className="mb-4 text-3xl md:text-4xl font-bold leading-relaxed tracking-wide">
             {heading}
           </h2>
@@ -43,7 +41,7 @@ export default function Logos({ data }: { readonly data: LogosProps }) {
                   src={item.url}
                   alt={item.alternativeText}
                   width={144}
-                  height={0}
+                  height={48}
                 />
               </div>
             </div>

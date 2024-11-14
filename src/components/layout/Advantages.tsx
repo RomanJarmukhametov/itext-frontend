@@ -1,4 +1,5 @@
 import { getIcon } from '@/lib/icons';
+import Tagline from '@/components/common/Tagline';
 
 interface CardProps {
   id: number;
@@ -24,9 +25,7 @@ export default function Advantages({ data }: { readonly data: AdvantagesProps })
     <section className="py-24 md:pb-32 bg-coolGray-50 bg-pattern-light">
       <div className="container px-4 mx-auto">
         <div className="md:max-w-4xl mb-12 mx-auto text-center">
-          <span className="inline-block py-px px-2 mb-4 text-xs leading-5 text-blue-500 bg-blue-100 font-medium uppercase rounded-full shadow-sm">
-            {tagline}
-          </span>
+          <Tagline text={tagline} />
           <h2 className="mb-4 text-3xl md:text-4xl font-bold leading-relaxed tracking-wide">
             {heading}
           </h2>
