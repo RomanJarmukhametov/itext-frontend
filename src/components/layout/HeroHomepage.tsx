@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { StrapiImage } from '@/components/common/StrapiImage';
 import RatingWidgetSmall from '@/components/common/RatingWidgetSmall';
+import BodyText from '@/components/common/BodyText';
 
 interface ImageProps {
   id: number;
@@ -33,7 +34,7 @@ export default function HeroHomepage({ data }: { readonly data: HeroProps }) {
   } = data;
 
   return (
-    <section className="relative overflow-hidden bg-pattern-white">
+    <section className="relative overflow-hidden bg-pattern-white" aria-labelledby="hero-heading">
       <div className="py-20 md:py-28">
         <div className="container px-4 mx-auto">
           <div className="flex flex-wrap xl:items-center -mx-4">
@@ -41,10 +42,13 @@ export default function HeroHomepage({ data }: { readonly data: HeroProps }) {
               <span className="inline-block py-px px-2 mb-4 text-xs leading-5 text-white bg-blue-500 uppercase rounded-full">
                 {tagline}
               </span>
-              <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight">
+              <h1
+                id="hero-heading"
+                className="mb-6 text-3xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight"
+              >
                 {heading}
               </h1>
-              <p className="mb-8 text-lg md:text-xl text-coolGray-500 font-medium">{description}</p>
+              <BodyText text={description} variant="large" className="mb-8" />
               <div className="flex flex-wrap">
                 <div className="w-full md:w-auto py-1 md:py-0 md:mr-4">
                   <button

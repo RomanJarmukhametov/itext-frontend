@@ -40,6 +40,7 @@ export default function Header({ navigationData }: { navigationData: NavigationD
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Бюро переводов iText</span>
             <StrapiImage
+              className="h-auto w-auto"
               src={navigationData.logoBlack.url}
               alt={navigationData.logoBlack.alternativeText}
               height={38}
