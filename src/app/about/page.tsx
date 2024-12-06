@@ -7,6 +7,7 @@ import Values from '@/components/layout/Values';
 import Numbers from '@/components/layout/Numbers';
 import Advantages from '@/components/layout/Advantages';
 import Logos from '@/components/layout/Logos';
+import Cta from '@/components/layout/Cta';
 
 interface SafeMetadata {
   title: string;
@@ -19,6 +20,7 @@ const blockComponents = {
   'layout.numbers': Numbers,
   'layout.advantages': Advantages,
   'layout.logos': Logos,
+  'layout.cta': Cta,
 };
 
 function blockRenderer(block: any) {

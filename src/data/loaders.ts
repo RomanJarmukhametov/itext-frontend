@@ -127,6 +127,9 @@ export async function getAboutPageData() {
               },
             },
           },
+          'layout.cta': {
+            populate: true,
+          },
         },
       },
     },
