@@ -137,3 +137,50 @@ export async function getAboutPageData() {
 
   return await fetchData(url.href);
 }
+
+export async function getServicesPageData() {
+  const url = new URL('/api/service-page', baseUrl);
+
+  url.search = qs.stringify({
+    populate: {
+      blocks: {
+        on: {
+          'layout.page-header': {
+            populate: {
+              image: {
+                fields: ['url', 'alternativeText'],
+              },
+            },
+          },
+          // 'layout.values': {
+          //   populate: {
+          //     valueCard: true,
+          //   },
+          // },
+          // 'layout.numbers': {
+          //   populate: {
+          //     stats: true,
+          //   },
+          // },
+          // 'layout.advantages': {
+          //   populate: {
+          //     card: true,
+          //   },
+          // },
+          // 'layout.logos': {
+          //   populate: {
+          //     image: {
+          //       fields: ['url', 'alternativeText'],
+          //     },
+          //   },
+          // },
+          // 'layout.cta': {
+          //   populate: true,
+          // },
+        },
+      },
+    },
+  });
+
+  return await fetchData(url.href);
+}

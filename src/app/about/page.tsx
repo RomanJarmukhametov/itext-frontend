@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import { getAboutPageData } from '@/data/loaders';
 import AnimatedSection from '@/components/common/AnimatedSection';
-import HeroAboutPage from '@/components/layout/HeroAboutPage';
+import PageHeader from '@/components/layout/PageHeader';
 import Values from '@/components/layout/Values';
 import Numbers from '@/components/layout/Numbers';
 import Advantages from '@/components/layout/Advantages';
@@ -15,7 +15,7 @@ interface SafeMetadata {
 }
 
 const blockComponents = {
-  'layout.page-header': HeroAboutPage,
+  'layout.page-header': PageHeader,
   'layout.values': Values,
   'layout.numbers': Numbers,
   'layout.advantages': Advantages,

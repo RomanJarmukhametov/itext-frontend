@@ -8,7 +8,7 @@ interface ImageProps {
   alternativeText: string;
 }
 
-interface AboutHeroProps {
+interface PageHeaderProps {
   id: number;
   documentId: string;
   __component: string;
@@ -18,7 +18,7 @@ interface AboutHeroProps {
   image: ImageProps;
 }
 
-export default function HeroAboutPage({ data }: { readonly data: AboutHeroProps }) {
+export default function PageHeader({ data }: { readonly data: PageHeaderProps }) {
   const { tagline, heading, description, image } = data;
   return (
     <section className="relative overflow-hidden bg-pattern-white" aria-labelledby="hero-heading">
