@@ -120,6 +120,13 @@ export async function getAboutPageData() {
               card: true,
             },
           },
+          'layout.logos': {
+            populate: {
+              image: {
+                fields: ['url', 'alternativeText'],
+              },
+            },
+          },
         },
       },
     },

@@ -6,6 +6,7 @@ import HeroAboutPage from '@/components/layout/HeroAboutPage';
 import Values from '@/components/layout/Values';
 import Numbers from '@/components/layout/Numbers';
 import Advantages from '@/components/layout/Advantages';
+import Logos from '@/components/layout/Logos';
 
 interface SafeMetadata {
   title: string;
@@ -17,12 +18,13 @@ const blockComponents = {
   'layout.values': Values,
   'layout.numbers': Numbers,
   'layout.advantages': Advantages,
+  'layout.logos': Logos,
 };
 
 function blockRenderer(block: any) {
   const Component = blockComponents[block.__component as keyof typeof blockComponents];
   return Component ? (
-    <AnimatedSection key={block.id}>
+    <AnimatedSection key={block.__component}>
       <Component data={block} />
     </AnimatedSection>
   ) : null;
