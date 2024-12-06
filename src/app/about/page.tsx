@@ -5,6 +5,7 @@ import AnimatedSection from '@/components/common/AnimatedSection';
 import HeroAboutPage from '@/components/layout/HeroAboutPage';
 import Values from '@/components/layout/Values';
 import Numbers from '@/components/layout/Numbers';
+import Advantages from '@/components/layout/Advantages';
 
 interface SafeMetadata {
   title: string;
@@ -15,6 +16,7 @@ const blockComponents = {
   'layout.page-header': HeroAboutPage,
   'layout.values': Values,
   'layout.numbers': Numbers,
+  'layout.advantages': Advantages,
 };
 
 function blockRenderer(block: any) {

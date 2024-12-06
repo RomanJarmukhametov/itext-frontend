@@ -115,6 +115,11 @@ export async function getAboutPageData() {
               stats: true,
             },
           },
+          'layout.advantages': {
+            populate: {
+              card: true,
+            },
+          },
         },
       },
     },
