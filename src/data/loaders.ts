@@ -110,6 +110,11 @@ export async function getAboutPageData() {
               valueCard: true,
             },
           },
+          'layout.numbers': {
+            populate: {
+              stats: true,
+            },
+          },
         },
       },
     },
