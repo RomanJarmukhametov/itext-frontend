@@ -45,6 +45,7 @@ export default function Header({ navigationData }: { navigationData: NavigationD
               alt={navigationData.logoBlack.alternativeText}
               height={38}
               width={112}
+              priority
             />
           </Link>
         </div>
@@ -92,6 +93,7 @@ export default function Header({ navigationData }: { navigationData: NavigationD
                 alt={navigationData.logoBlack.alternativeText}
                 height={38}
                 width={112}
+                priority
               />
             </Link>
             <button

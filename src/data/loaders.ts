@@ -90,3 +90,25 @@ export async function getHomePageData() {
 
   return await fetchData(url.href);
 }
+
+export async function getAboutPageData() {
+  const url = new URL('/api/about-page', baseUrl);
+
+  url.search = qs.stringify({
+    populate: {
+      blocks: {
+        on: {
+          'layout.page-header': {
+            populate: {
+              image: {
+                fields: ['url', 'alternativeText'],
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+
+  return await fetchData(url.href);
+}
