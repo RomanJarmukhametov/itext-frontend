@@ -105,6 +105,11 @@ export async function getAboutPageData() {
               },
             },
           },
+          'layout.values': {
+            populate: {
+              valueCard: true,
+            },
+          },
         },
       },
     },

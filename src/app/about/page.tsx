@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { getAboutPageData } from '@/data/loaders';
 import AnimatedSection from '@/components/common/AnimatedSection';
 import HeroAboutPage from '@/components/layout/HeroAboutPage';
+import Values from '@/components/layout/Values';
 
 interface SafeMetadata {
   title: string;
@@ -11,6 +12,7 @@ interface SafeMetadata {
 
 const blockComponents = {
   'layout.page-header': HeroAboutPage,
+  'layout.values': Values,
 };
 
 function blockRenderer(block: any) {
