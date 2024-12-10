@@ -25,7 +25,7 @@ export default async function RootLayout({
   const navigationData = await getNavigationData();
 
   return (
-    <html lang="ru" className={`${roboto.className} antialiased`}>
+    <html lang="ru" className={`${roboto.className} antialiased scroll-smooth`}>
       <body className="flex flex-col min-h-screen">
         <Header navigationData={navigationData.data} />
         <main className="flex-grow">{children}</main>

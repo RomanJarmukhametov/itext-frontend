@@ -152,6 +152,14 @@ export async function getServicesPageData() {
               },
             },
           },
+          'layout.peculiarities': {
+            populate: {
+              image: {
+                fields: ['url', 'alternativeText'],
+              },
+              card: true,
+            },
+          },
           // 'layout.values': {
           //   populate: {
           //     valueCard: true,
