@@ -9,6 +9,9 @@ import {
   SupportIcon,
   SolutionsIcon,
   CultureIcon,
+  ProfessionalTranslationsIcon,
+  SpecializedTranslationsIcon,
+  ProcessAutomationIcon,
 } from '@/components/common/icons';
 
 export function getIcon(name: string) {
@@ -31,6 +34,12 @@ export function getIcon(name: string) {
       return React.createElement(SolutionsIcon);
     case 'Culture':
       return React.createElement(CultureIcon);
+    case 'ProfessionalTranslations':
+      return React.createElement(ProfessionalTranslationsIcon);
+    case 'SpecializedTranslations':
+      return React.createElement(SpecializedTranslationsIcon);
+    case 'ProcessAutomation':
+      return React.createElement(ProcessAutomationIcon);
     default:
       return null;
   }

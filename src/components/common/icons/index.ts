@@ -7,3 +7,6 @@ export { default as PrivacyIcon } from './PrivacyIcon';
 export { default as SupportIcon } from './SupportIcon';
 export { default as SolutionsIcon } from './SolutionsIcon';
 export { default as CultureIcon } from './CultureIcon';
+export { default as ProfessionalTranslationsIcon } from './ProfessionalTranslationsIcon';
+export { default as SpecializedTranslationsIcon } from './SpecialiazedTranslationsIcon';
+export { default as ProcessAutomationIcon } from './ProcessAutomationIcon';
