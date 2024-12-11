@@ -13,3 +13,4 @@ export { default as ProcessAutomationIcon } from './ProcessAutomationIcon';
 export { default as OrderIcon } from './OrderIcon';
 export { default as TranslationAndVerificationIcon } from './TranslationAndVerificationIcon';
 export { default as DeliveryIcon } from './DeliveryIcon';
+export { default as ShieldIcon } from './ShieldIcon';

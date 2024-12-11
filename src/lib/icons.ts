@@ -15,6 +15,7 @@ import {
   OrderIcon,
   TranslationAndVerificationIcon,
   DeliveryIcon,
+  ShieldIcon,
 } from '@/components/common/icons';
 
 export function getIcon(name: string) {
@@ -49,6 +50,8 @@ export function getIcon(name: string) {
       return React.createElement(TranslationAndVerificationIcon);
     case 'Delivery':
       return React.createElement(DeliveryIcon);
+    case 'Shield':
+      return React.createElement(ShieldIcon);
     default:
       return null;
   }
