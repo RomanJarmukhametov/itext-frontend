@@ -170,6 +170,19 @@ export async function getServicesPageData() {
               card: true,
             },
           },
+          'layout.logos': {
+            populate: {
+              image: {
+                fields: ['url', 'alternativeText'],
+              },
+            },
+          },
+          'layout.reviews': {
+            populate: true,
+          },
+          'layout.cta': {
+            populate: true,
+          },
         },
       },
     },

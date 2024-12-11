@@ -6,11 +6,9 @@ import PageHeader from '@/components/layout/PageHeader';
 import Peculiarities from '@/components/layout/Peculiarities';
 import Process from '@/components/layout/Process';
 import Faq from '@/components/layout/Faq';
-// import Values from '@/components/layout/Values';
-// import Numbers from '@/components/layout/Numbers';
-// import Advantages from '@/components/layout/Advantages';
-// import Logos from '@/components/layout/Logos';
-// import Cta from '@/components/layout/Cta';
+import Logos from '@/components/layout/Logos';
+import Reviews from '@/components/layout/Reviews';
+import Cta from '@/components/layout/Cta';
 
 interface SafeMetadata {
   title: string;
@@ -22,11 +20,9 @@ const blockComponents = {
   'layout.peculiarities': Peculiarities,
   'layout.features': Process,
   'layout.faq': Faq,
-  // 'layout.values': Values,
-  // 'layout.numbers': Numbers,
-  // 'layout.advantages': Advantages,
-  // 'layout.logos': Logos,
-  // 'layout.cta': Cta,
+  'layout.logos': Logos,
+  'layout.reviews': Reviews,
+  'layout.cta': Cta,
 };
 
 function blockRenderer(block: any) {
