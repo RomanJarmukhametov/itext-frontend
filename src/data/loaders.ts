@@ -160,31 +160,11 @@ export async function getServicesPageData() {
               card: true,
             },
           },
-          // 'layout.values': {
-          //   populate: {
-          //     valueCard: true,
-          //   },
-          // },
-          // 'layout.numbers': {
-          //   populate: {
-          //     stats: true,
-          //   },
-          // },
-          // 'layout.advantages': {
-          //   populate: {
-          //     card: true,
-          //   },
-          // },
-          // 'layout.logos': {
-          //   populate: {
-          //     image: {
-          //       fields: ['url', 'alternativeText'],
-          //     },
-          //   },
-          // },
-          // 'layout.cta': {
-          //   populate: true,
-          // },
+          'layout.features': {
+            populate: {
+              card: true,
+            },
+          },
         },
       },
     },
