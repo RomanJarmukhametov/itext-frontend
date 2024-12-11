@@ -12,6 +12,9 @@ import {
   ProfessionalTranslationsIcon,
   SpecializedTranslationsIcon,
   ProcessAutomationIcon,
+  OrderIcon,
+  TranslationAndVerificationIcon,
+  DeliveryIcon,
 } from '@/components/common/icons';
 
 export function getIcon(name: string) {
@@ -40,6 +43,12 @@ export function getIcon(name: string) {
       return React.createElement(SpecializedTranslationsIcon);
     case 'ProcessAutomation':
       return React.createElement(ProcessAutomationIcon);
+    case 'Order':
+      return React.createElement(OrderIcon);
+    case 'TranslationAndVerification':
+      return React.createElement(TranslationAndVerificationIcon);
+    case 'Delivery':
+      return React.createElement(DeliveryIcon);
     default:
       return null;
   }

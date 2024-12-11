@@ -10,3 +10,6 @@ export { default as CultureIcon } from './CultureIcon';
 export { default as ProfessionalTranslationsIcon } from './ProfessionalTranslationsIcon';
 export { default as SpecializedTranslationsIcon } from './SpecialiazedTranslationsIcon';
 export { default as ProcessAutomationIcon } from './ProcessAutomationIcon';
+export { default as OrderIcon } from './OrderIcon';
+export { default as TranslationAndVerificationIcon } from './TranslationAndVerificationIcon';
+export { default as DeliveryIcon } from './DeliveryIcon';
