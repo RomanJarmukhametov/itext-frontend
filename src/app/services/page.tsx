@@ -5,6 +5,7 @@ import AnimatedSection from '@/components/common/AnimatedSection';
 import PageHeader from '@/components/layout/PageHeader';
 import Peculiarities from '@/components/layout/Peculiarities';
 import Process from '@/components/layout/Process';
+import Faq from '@/components/layout/Faq';
 // import Values from '@/components/layout/Values';
 // import Numbers from '@/components/layout/Numbers';
 // import Advantages from '@/components/layout/Advantages';
@@ -20,6 +21,7 @@ const blockComponents = {
   'layout.page-header': PageHeader,
   'layout.peculiarities': Peculiarities,
   'layout.features': Process,
+  'layout.faq': Faq,
   // 'layout.values': Values,
   // 'layout.numbers': Numbers,
   // 'layout.advantages': Advantages,

@@ -25,7 +25,6 @@ export default function Process({ data }: { readonly data: ProcessProps }) {
 
   return (
     <section
-      data-from-ai="true"
       className="py-24 md:pb-28 bg-white overflow-hidden bg-pattern-white"
       aria-labelledby="process-heading"
     >

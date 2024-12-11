@@ -165,6 +165,11 @@ export async function getServicesPageData() {
               card: true,
             },
           },
+          'layout.faq': {
+            populate: {
+              card: true,
+            },
+          },
         },
       },
     },
