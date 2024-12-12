@@ -190,3 +190,15 @@ export async function getServicesPageData() {
 
   return await fetchData(url.href);
 }
+
+export async function getBlogPageData() {
+  const url = new URL('/api/blog-page', baseUrl);
+
+  url.search = qs.stringify({
+    populate: {
+      blogPageHeader: true,
+    },
+  });
+
+  return await fetchData(url.href);
+}
