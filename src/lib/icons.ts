@@ -16,6 +16,8 @@ import {
   TranslationAndVerificationIcon,
   DeliveryIcon,
   ShieldIcon,
+  ArrowRightIcon,
+  ArrowDownIcon,
 } from '@/components/common/icons';
 
 export function getIcon(name: string) {
@@ -52,6 +54,10 @@ export function getIcon(name: string) {
       return React.createElement(DeliveryIcon);
     case 'Shield':
       return React.createElement(ShieldIcon);
+    case 'ArrowRight':
+      return React.createElement(ArrowRightIcon);
+    case 'ArrowDown':
+      return React.createElement(ArrowDownIcon);
     default:
       return null;
   }

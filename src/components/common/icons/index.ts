@@ -14,3 +14,5 @@ export { default as OrderIcon } from './OrderIcon';
 export { default as TranslationAndVerificationIcon } from './TranslationAndVerificationIcon';
 export { default as DeliveryIcon } from './DeliveryIcon';
 export { default as ShieldIcon } from './ShieldIcon';
+export { default as ArrowRightIcon } from './ArrowRightIcon';
+export { default as ArrowDownIcon } from './ArrowDownIcon';
