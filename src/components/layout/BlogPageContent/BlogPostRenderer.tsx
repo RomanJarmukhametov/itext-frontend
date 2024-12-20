@@ -2,6 +2,8 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import moment from 'moment';
+import 'moment/locale/ru';
 import { StrapiImage } from '@/components/common/StrapiImage';
 import { getIcon } from '@/lib/icons';
 
@@ -28,7 +30,10 @@ function BlogPostRenderer({ blogPosts }: { blogPosts: any[] }) {
                 height={600}
               />
 
-              <p className="mb-2 text-coolGray-500 font-medium">{post.publishedAt}</p>
+              {/* Format Date with Moment */}
+              <p className="mb-2 text-coolGray-500 font-medium">
+                {moment(post.publishedAt).format('D MMMM YYYY')}
+              </p>
               <p className="inline-block mb-4 text-2xl leading-tight text-coolGray-800 hover:text-coolGray-900 font-bold">
                 {post.title}
               </p>
