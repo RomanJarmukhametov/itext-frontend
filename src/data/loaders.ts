@@ -202,3 +202,17 @@ export async function getBlogPageData() {
 
   return await fetchData(url.href);
 }
+
+export async function getAllBlogPostsData() {
+  const url = new URL('/api/posts', baseUrl);
+
+  url.search = qs.stringify({
+    populate: {
+      image: {
+        fields: ['url', 'alternativeText'],
+      },
+    },
+  });
+
+  return await fetchData(url.href);
+}
