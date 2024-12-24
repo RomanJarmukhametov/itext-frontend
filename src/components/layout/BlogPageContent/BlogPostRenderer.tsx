@@ -27,7 +27,7 @@ function BlogPostRenderer({ blogPosts }: { blogPosts: any[] }) {
                 src={post.image.url}
                 alt={post.image.alternativeText}
                 width={1200}
-                height={600}
+                height={800}
               />
 
               {/* Format Date with Moment */}

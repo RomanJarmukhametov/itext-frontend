@@ -216,3 +216,21 @@ export async function getAllBlogPostsData() {
 
   return await fetchData(url.href);
 }
+
+export async function getBlogPostData(slug: string) {
+  const url = new URL(`/api/posts`, baseUrl);
+
+  url.search = qs.stringify({
+    populate: {
+      image: {
+        fields: ['url', 'alternativeText', 'name'],
+      },
+    },
+    filters: {
+      slug: { $eq: slug },
+    },
+    content: true,
+  });
+
+  return await fetchData(url.href);
+}
