@@ -5,6 +5,8 @@ import { getNavigationData } from '@/data/loaders';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
+import { ToastContainer } from 'react-toastify';
+
 export const metadata: Metadata = {
   title: 'itext.kz',
   description:
@@ -30,6 +32,7 @@ export default async function RootLayout({
         <Header navigationData={navigationData.data} />
         <main className="flex-grow">{children}</main>
         <Footer navigationData={navigationData.data} />
+        <ToastContainer />
       </body>
     </html>
   );
