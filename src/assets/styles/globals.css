@@ -33,6 +33,11 @@
   background-position: center;
 }
 
+.bg-pattern-light-one {
+  background-image: url('/images/pattern-light1.svg');
+  background-position: center;
+}
+
 .bg-pattern-dark {
   background-image: url('/images/pattern-dark.svg');
   background-position: center;

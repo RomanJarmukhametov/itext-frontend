@@ -5,6 +5,7 @@ import Tagline from '@/components/common/Tagline';
 import Heading from '@/components/common/Heading';
 import BodyText from '@/components/common/BodyText';
 import BlogPageContent from '@/components/layout/BlogPageContent/BlogPageContent';
+import Subscribe from '@/components/layout/Subscribe';
 interface SafeMetadata {
   title: string;
   description: string;
@@ -41,6 +42,10 @@ export default async function Blog() {
             <BlogPageContent />
           </div>
         </section>
+      </AnimatedSection>
+
+      <AnimatedSection>
+        <Subscribe />
       </AnimatedSection>
     </>
   );
