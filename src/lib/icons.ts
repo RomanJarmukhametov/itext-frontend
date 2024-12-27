@@ -18,6 +18,10 @@ import {
   ShieldIcon,
   ArrowRightIcon,
   ArrowDownIcon,
+  FacebookIcon,
+  XIcon,
+  InstagramIcon,
+  LinkedinIcon,
 } from '@/components/common/icons';
 
 export function getIcon(name: string) {
@@ -58,6 +62,14 @@ export function getIcon(name: string) {
       return React.createElement(ArrowRightIcon);
     case 'ArrowDown':
       return React.createElement(ArrowDownIcon);
+    case 'Facebook':
+      return React.createElement(FacebookIcon);
+    case 'X':
+      return React.createElement(XIcon);
+    case 'Instagram':
+      return React.createElement(InstagramIcon);
+    case 'Linkedin':
+      return React.createElement(LinkedinIcon);
     default:
       return null;
   }

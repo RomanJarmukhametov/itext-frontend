@@ -16,3 +16,7 @@ export { default as DeliveryIcon } from './DeliveryIcon';
 export { default as ShieldIcon } from './ShieldIcon';
 export { default as ArrowRightIcon } from './ArrowRightIcon';
 export { default as ArrowDownIcon } from './ArrowDownIcon';
+export { default as FacebookIcon } from './FacebookIcon';
+export { default as XIcon } from './XIcon';
+export { default as InstagramIcon } from './InstagramIcon';
+export { default as LinkedinIcon } from './LinkedinIcon';

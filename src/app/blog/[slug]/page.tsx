@@ -32,6 +32,9 @@ export default async function SinglePost({ params }: Props) {
     description: post.description || 'Default Description',
   };
 
+  const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`;
+  const postTitle = post.title;
+
   return (
     <>
       <MetadataRenderer metadata={metadata as SafeMetadata} />
@@ -71,7 +74,7 @@ export default async function SinglePost({ params }: Props) {
 
           <div className="flex items-center justify-center">
             <CopyLinkButton />
-            <SocialMediaShareButtons />
+            <SocialMediaShareButtons postUrl={postUrl} postTitle={postTitle} />
           </div>
         </div>
       </section>
