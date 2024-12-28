@@ -22,6 +22,7 @@ import {
   XIcon,
   InstagramIcon,
   LinkedinIcon,
+  FileUploadIcon,
 } from '@/components/common/icons';
 
 export function getIcon(name: string) {
@@ -70,6 +71,8 @@ export function getIcon(name: string) {
       return React.createElement(InstagramIcon);
     case 'Linkedin':
       return React.createElement(LinkedinIcon);
+    case 'FileUpload':
+      return React.createElement(FileUploadIcon);
     default:
       return null;
   }
