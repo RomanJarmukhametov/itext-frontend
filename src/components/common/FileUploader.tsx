@@ -4,42 +4,18 @@
 import { useState } from 'react';
 import { getIcon } from '@/lib/icons';
 
-type UploadStatus = 'idle' | 'uploading' | 'success' | 'error';
-
-export default function FileUploader() {
+export default function FileUploader({
+  onFilesSelected,
+}: {
+  onFilesSelected: (files: File[]) => void;
+}) {
   const [files, setFiles] = useState<File[]>([]);
-  const [status, setStatus] = useState<UploadStatus>('idle');
-  const [uploadProgress, setUploadProgress] = useState(0);
 
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     if (event.target.files) {
       const fileList = Array.from(event.target.files);
       setFiles(fileList);
-    }
-  }
-
-  async function handleFileUpload() {
-    if (files.length === 0) return;
-    setStatus('uploading');
-    const formData = new FormData();
-    files.forEach((file) => formData.append('files', file));
-
-    try {
-      const response = await fetch('https://httpbin.org/post', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      if (response.ok) {
-        setStatus('success');
-      } else {
-        setStatus('error');
-      }
-    } catch (error) {
-      setStatus('error');
+      onFilesSelected(fileList); // Notify parent component
     }
   }
 
@@ -81,14 +57,6 @@ export default function FileUploader() {
           />
         </label>
       </div>
-
-      {files.length > 0 && status !== 'uploading' && (
-        <button onClick={handleFileUpload}>Загрузить</button>
-      )}
-
-      {status === 'success' && <p className="text-green-500">Файлы успешно загружены.</p>}
-
-      {status === 'error' && <p className="text-red-500">Ошибка загрузки файлов.</p>}
 
       <div className="mb-8">
         <label className="block mb-2 text-coolGray-800 font-medium leading-6">Файлы</label>
