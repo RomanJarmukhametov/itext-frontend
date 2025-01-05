@@ -11,9 +11,10 @@ interface OrderProps {
   sourceLanguage: string;
   targetLanguage: string;
   userMessage?: string;
+  userFiles?: { id: number }[];
 }
 
-export async function OrderService(formData: OrderProps) {
+export async function OrderService(orderData: OrderProps) {
   const url = new URL('/api/orders', baseUrl);
 
   try {
@@ -23,7 +24,10 @@ export async function OrderService(formData: OrderProps) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        data: { ...formData },
+        data: {
+          ...orderData,
+          userFiles: orderData.userFiles?.map((file) => ({ id: file.id })),
+        },
       }),
       cache: 'no-cache',
     });

@@ -3,19 +3,70 @@
 
 import { useState } from 'react';
 import { getIcon } from '@/lib/icons';
+import { toast } from 'react-toastify';
+import { z } from 'zod';
+import { fileAction } from '@/data/actions/file-action';
 
-export default function FileUploader({
-  onFilesSelected,
-}: {
-  onFilesSelected: (files: File[]) => void;
-}) {
+interface FileUploaderProps {
+  onFilesUploaded: (uploadedFiles: { id: number }[]) => void; // Define the type for uploaded files
+}
+
+const MAX_TOTAL_FILE_SIZE_MB = 2; // Maximum total file size in MB
+
+export default function FileUploader({}: FileUploaderProps) {
   const [files, setFiles] = useState<File[]>([]);
+  const [uploading, setUploading] = useState(false);
 
-  function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+  const fileSchema = z.array(
+    z
+      .instanceof(File)
+      .refine((file) => file.size > 0, { message: 'File size must be greater than 0' })
+      .refine((file) => !file.name.endsWith('.exe'), {
+        message: 'Файлы с расширением .exe недопустимы',
+      })
+  );
+
+  async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     if (event.target.files) {
       const fileList = Array.from(event.target.files);
+
+      // Calculate total size of selected files
+      const totalSize = fileList.reduce((acc, file) => acc + file.size, 0);
+      const totalSizeMB = totalSize / (1024 * 1024); // Convert to MB
+
+      // Check if total size exceeds the limit
+      if (totalSizeMB > MAX_TOTAL_FILE_SIZE_MB) {
+        toast.error(`Общий размер файлов не должен превышать ${MAX_TOTAL_FILE_SIZE_MB} MB.`);
+        return;
+      }
+
+      // Validate files
+      const validation = fileSchema.safeParse(fileList);
+      if (!validation.success) {
+        toast.error('Ошибка при проверке файлов. Пожалуйста, выберите другие файлы.');
+        console.error(validation.error.flatten().fieldErrors);
+        return;
+      }
+
       setFiles(fileList);
-      onFilesSelected(fileList); // Notify parent component
+
+      // Upload files
+      setUploading(true);
+      const uploadResult = await fileAction({}, fileList);
+
+      if (uploadResult.toastType === 'success') {
+        // Save file IDs to local storage
+        const uploadedFileIds = uploadResult.uploadedFiles.map((file: { id: number }) => ({
+          id: file.id,
+        }));
+        localStorage.setItem('uploadedFileIds', JSON.stringify(uploadedFileIds));
+        toast.success('Файлы успешно загружены!');
+      } else {
+        console.error(uploadResult.message);
+        toast.error(uploadResult.message);
+      }
+
+      setUploading(false);
     }
   }
 
@@ -30,7 +81,9 @@ export default function FileUploader({
       <div className="mb-8">
         <label
           htmlFor="file-input"
-          className="group flex p-6 items-center justify-center border-dashed border-2 h-52 border-coolGray-200 rounded-lg text-coolGray-300 cursor-pointer"
+          className={`group flex p-6 items-center justify-center border-dashed border-2 h-52 border-coolGray-200 rounded-lg text-coolGray-300 cursor-pointer ${
+            uploading ? 'opacity-50 pointer-events-none' : ''
+          }`}
         >
           <div className="max-w-max text-center">
             <div className="inline-block mb-4">
@@ -72,9 +125,6 @@ export default function FileUploader({
                   <span className="ml-2 text-coolGray-800 font-medium">{file.name}</span>
                 </p>
                 <span className="text-coolGray-300">{formatFileSize(file.size)}</span>
-              </div>
-              <div className="relative w-full h-2 bg-darkCoolGray-100 rounded-full overflow-hidden">
-                <div className="absolute top-0 bottom-0 left-0 w-3/12 bg-blue-500 rounded-full" />
               </div>
             </div>
           ))

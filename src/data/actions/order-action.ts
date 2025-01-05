@@ -22,6 +22,7 @@ const schemaRegister = z.object({
     message: 'Выберите язык',
   }),
   userMessage: z.string(), // Optional field
+  userFiles: z.array(z.object({ id: z.number() })).optional(), // Validate uploaded file IDs
 });
 
 export async function orderAction(prevState: any, formData: FormData) {
@@ -34,14 +35,10 @@ export async function orderAction(prevState: any, formData: FormData) {
     };
   }
 
-  const validatedFields = schemaRegister.safeParse({
-    userName: formData.get('userName'),
-    userEmail: formData.get('userEmail'),
-    userPhone: formData.get('userPhone'),
-    sourceLanguage: formData.get('sourceLanguage'),
-    targetLanguage: formData.get('targetLanguage'),
-    userMessage: formData.get('userMessage'),
-  });
+  // Parse order data (including uploaded file IDs) from FormData
+  const parsedData = JSON.parse(formData.get('data') as string);
+
+  const validatedFields = schemaRegister.safeParse(parsedData);
 
   if (!validatedFields.success) {
     return {
@@ -52,24 +49,14 @@ export async function orderAction(prevState: any, formData: FormData) {
     };
   }
 
-  // Pass `FormData` to the service for file upload support
-  const orderData = {
-    userName: formData.get('userName') as string,
-    userEmail: formData.get('userEmail') as string,
-    userPhone: formData.get('userPhone') as string,
-    sourceLanguage: formData.get('sourceLanguage') as string,
-    targetLanguage: formData.get('targetLanguage') as string,
-    userMessage: formData.get('userMessage') as string,
-  };
-
-  const responseData = await OrderService(orderData);
+  const responseData = await OrderService(validatedFields.data);
 
   if (!responseData) {
     return {
       ...prevState,
       strapiErrors: null,
       zodErrors: null,
-      message: 'Упс! Что-то пошло не так. Пожалуйста, попробуйте еще раз.',
+      message: 'Something went wrong. Please try again later.',
     };
   }
 

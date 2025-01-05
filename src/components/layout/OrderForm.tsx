@@ -30,7 +30,6 @@ export default function OrderForm({ isOpen, onClose }: OrderFormProps) {
   // Trigger toast notifications
   useEffect(() => {
     if (formState.toastMessage && !toastDisplayed) {
-      // Ensure toast is displayed only once
       setToastDisplayed(true);
 
       if (formState.toastType === 'success') {
@@ -45,6 +44,7 @@ export default function OrderForm({ isOpen, onClose }: OrderFormProps) {
       // Clear the form on success
       if (formState.toastType === 'success' && formRef.current) {
         formRef.current.reset();
+        localStorage.removeItem('uploadedFileIds'); // Clear uploaded file IDs
       }
     }
   }, [formState.toastMessage, formState.toastType, onClose, toastDisplayed]);
@@ -52,7 +52,33 @@ export default function OrderForm({ isOpen, onClose }: OrderFormProps) {
   const handleSubmit = (formData: FormData) => {
     startTransition(() => {
       setToastDisplayed(false);
+
+      // Retrieve file IDs from local storage
+      const uploadedFileIDs = localStorage.getItem('uploadedFileIds')
+        ? JSON.parse(localStorage.getItem('uploadedFileIds') || '[]').map((id: { id: number }) => ({
+            id: id.id,
+          }))
+        : [];
+
+      // Construct order data with file IDs
+      const orderData = {
+        userName: formData.get('userName'),
+        userEmail: formData.get('userEmail'),
+        userPhone: formData.get('userPhone'),
+        sourceLanguage: formData.get('sourceLanguage'),
+        targetLanguage: formData.get('targetLanguage'),
+        userMessage: formData.get('userMessage'),
+        userFiles: uploadedFileIDs, // Include file IDs
+      };
+
+      // Add JSON data to FormData
+      formData.set('data', JSON.stringify(orderData));
+
+      // Dispatch action to submit form
       dispatchAction(formData);
+
+      // Clear uploaded file IDs from local storage after submission
+      localStorage.removeItem('uploadedFileIds');
     });
   };
 
@@ -111,7 +137,12 @@ export default function OrderForm({ isOpen, onClose }: OrderFormProps) {
                     autoComplete="off"
                   />
                   <FormFields formState={formState} />
-                  <FileUploader onFilesSelected={(files) => console.log(files)} />
+                  <FileUploader
+                    onFilesUploaded={(uploadedFiles) => {
+                      const fileIds = uploadedFiles.map((file) => ({ id: file.id }));
+                      localStorage.setItem('uploadedFileIds', JSON.stringify(fileIds)); // Save uploaded file IDs
+                    }}
+                  />
                   <button
                     type="submit"
                     className={`py-3 px-7 w-full bg-blue-500 text-white rounded-md ${
