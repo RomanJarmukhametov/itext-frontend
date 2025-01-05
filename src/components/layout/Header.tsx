@@ -7,6 +7,7 @@ import { StrapiImage } from '@/components/common/StrapiImage';
 import Link from 'next/link';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import OrderForm from '@/components/layout/OrderForm'; // New Dialog
 
 interface ImageProps {
   url: string;
@@ -28,6 +29,7 @@ interface NavigationData {
 
 export default function Header({ navigationData }: { navigationData: NavigationData }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false); // State for the new dialog
   const pathname = usePathname();
 
   return (
@@ -66,6 +68,7 @@ export default function Header({ navigationData }: { navigationData: NavigationD
         <div className="flex flex-1 items-center justify-end gap-x-6">
           <button
             type="button"
+            onClick={() => setDialogOpen(true)} // Open the new dialog
             className="inline-block py-2 px-4 text-sm leading-5 text-blue-50 bg-blue-500 hover:bg-blue-600 font-medium focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-md transition duration-300 ease-in-out"
           >
             {navigationData.button}
@@ -98,6 +101,7 @@ export default function Header({ navigationData }: { navigationData: NavigationD
             </Link>
             <button
               type="button"
+              onClick={() => setMobileMenuOpen(true)}
               className="ml-auto rounded-md py-2 px-4 text-sm shadow-sm text-blue-50 bg-blue-500 hover:bg-blue-600 font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus:ring-opacity-50 transition duration-300 ease-in-out"
             >
               {navigationData.button}
@@ -131,6 +135,7 @@ export default function Header({ navigationData }: { navigationData: NavigationD
           </div>
         </DialogPanel>
       </Dialog>
+      <OrderForm isOpen={dialogOpen} onClose={() => setDialogOpen(false)} /> {/* New Dialog */}
     </header>
   );
 }
