@@ -3,6 +3,7 @@ import { StrapiImage } from '@/components/common/StrapiImage';
 import RatingWidgetSmall from '@/components/common/RatingWidgetSmall';
 import Heading from '@/components/common/Heading';
 import BodyText from '@/components/common/BodyText';
+import CtaPrimaryButton from '@/components/common/CtaPrimaryButton';
 
 interface ImageProps {
   id: number;
@@ -49,12 +50,7 @@ export default function HeroHomepage({ data }: { readonly data: HeroProps }) {
               <BodyText text={description} variant="large" className="mb-8" />
               <div className="flex flex-wrap">
                 <div className="w-full md:w-auto py-1 md:py-0 md:mr-4">
-                  <button
-                    type="button"
-                    className="inline-block py-4 px-7 w-full text-base md:text-lg leading-4 text-blue-50 font-medium text-center bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 border border-blue-500 rounded-md shadow-sm  transition duration-300 ease-in-out"
-                  >
-                    {buttonPrimary}
-                  </button>
+                  <CtaPrimaryButton hero text={buttonPrimary} />
                 </div>
                 <div className="w-full md:w-auto py-1 md:py-0">
                   <Link
