@@ -234,3 +234,17 @@ export async function getBlogPostData(slug: string) {
 
   return await fetchData(url.href);
 }
+
+export async function getContactPageData() {
+  const url = new URL('/api/contact-page', baseUrl);
+
+  url.search = qs.stringify({
+    populate: {
+      image: {
+        fields: ['url', 'alternativeText'],
+      },
+    },
+  });
+
+  return await fetchData(url.href);
+}
