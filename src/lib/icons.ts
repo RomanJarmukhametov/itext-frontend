@@ -24,6 +24,9 @@ import {
   LinkedinIcon,
   FileUploadIcon,
   FileIcon,
+  EmailIcon,
+  PhoneIcon,
+  AddressIcon,
 } from '@/components/common/icons';
 
 export function getIcon(name: string) {
@@ -76,6 +79,12 @@ export function getIcon(name: string) {
       return React.createElement(FileUploadIcon);
     case 'File':
       return React.createElement(FileIcon);
+    case 'Email':
+      return React.createElement(EmailIcon);
+    case 'Phone':
+      return React.createElement(PhoneIcon);
+    case 'Address':
+      return React.createElement(AddressIcon);
     default:
       return null;
   }

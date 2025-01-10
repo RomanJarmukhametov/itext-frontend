@@ -22,3 +22,6 @@ export { default as InstagramIcon } from './InstagramIcon';
 export { default as LinkedinIcon } from './LinkedinIcon';
 export { default as FileUploadIcon } from './FileUploadIcon';
 export { default as FileIcon } from './FileIcon';
+export { default as EmailIcon } from './EmailIcon';
+export { default as PhoneIcon } from './PhoneIcon';
+export { default as AddressIcon } from './AddressIcon';
