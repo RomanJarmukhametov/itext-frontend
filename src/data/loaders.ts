@@ -243,6 +243,7 @@ export async function getContactPageData() {
       image: {
         fields: ['url', 'alternativeText'],
       },
+      pageHeader: true,
     },
   });
 

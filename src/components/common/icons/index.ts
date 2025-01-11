@@ -25,3 +25,4 @@ export { default as FileIcon } from './FileIcon';
 export { default as EmailIcon } from './EmailIcon';
 export { default as PhoneIcon } from './PhoneIcon';
 export { default as AddressIcon } from './AddressIcon';
+export { default as WhatsAppIcon } from './WhatsAppIcon';

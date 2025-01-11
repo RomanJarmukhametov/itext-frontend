@@ -1,141 +1,128 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { getContactPageData } from '@/data/loaders';
 import { getIcon } from '@/lib/icons';
+import AnimatedSection from '@/components/common/AnimatedSection';
+import { StrapiImage } from '@/components/common/StrapiImage';
+import Tagline from '@/components/common/Tagline';
+import Heading from '@/components/common/Heading';
+import BodyText from '@/components/common/BodyText';
 
-export default function Contacts() {
+interface SafeMetadata {
+  title: string;
+  description: string;
+}
+const EMAIL_SUBJECT = 'Заказ перевода с сайта itext.kz';
+const EMAIL_BODY = `Здравствуйте,\n\nНеобходимо перевести следующие документы:`;
+
+export default async function Contacts() {
+  const strapiData = await getContactPageData();
+
+  const { title, description, pageHeader, email, phone, address, image } = strapiData?.data || {};
+
+  // Metadata object for dynamic SEO
+  const metadata: Metadata = {
+    title: title || 'Default Title',
+    description: description || 'Default Description',
+  };
+
   return (
     <>
-      <section className="pt-20 bg-coolGray-50 bg-pattern-light-one">
-        <div className="container px-4 mx-auto">
-          <div className="max-w-4xl mx-auto mb-16 text-center">
-            <span className="inline-block py-px px-2 mb-4 text-xs leading-5 text-blue-500 bg-blue-100 font-medium uppercase rounded-9xl">
-              Contact
-            </span>
-            <h3 className="mb-4 text-4xl md:text-5xl leading-tight text-darkCoolGray-900 font-bold tracking-tighter">
-              Let stay connected
-            </h3>
-            <p className="text-lg md:text-xl text-coolGray-500 font-medium">
-              I never been easier to get in touch with Flex. Call us, use our live chat widget or
-              email and we ll get back to you as soon as possible!
-            </p>
-          </div>
-          <div className="flex flex-wrap -mx-4 pb-16">
-            <div className="w-full md:w-1/3 px-4 mb-10 md:mb-0">
-              <div className="max-w-xs mx-auto text-center">
-                {getIcon('Email')}
-                <h3 className="mb-2 text-2xl md:text-3xl leading-9 text-coolGray-800 font-bold">
-                  Email
-                </h3>
-                <a
-                  className="text-xl text-coolGray-500 hover:text-coolGray-600 font-medium"
-                  href="mailto:#"
-                >
-                  contact@flex.co
-                </a>
-              </div>
+      <MetadataRenderer metadata={metadata as SafeMetadata} />
+
+      <AnimatedSection>
+        <section className="pt-20 bg-coolGray-50 bg-pattern-light-one">
+          <div className="container px-4 mx-auto">
+            <div className="max-w-4xl mx-auto mb-16 text-center">
+              <Tagline text={pageHeader.tagline} />
+              <Heading level={1}>{pageHeader.title}</Heading>
+              <BodyText variant="large" text={pageHeader.description} />
             </div>
-            <div className="w-full md:w-1/3 px-4 mb-10 md:mb-0">
-              <div className="max-w-xs mx-auto text-center">
-                {getIcon('Phone')}
-                <h3 className="mb-2 text-2xl md:text-3xl leading-9 text-coolGray-800 font-bold">
-                  Phone
-                </h3>
-                <p className="text-xl text-coolGray-500 font-medium">+7-843-672-431</p>
-              </div>
-            </div>
-            <div className="w-full md:w-1/3 px-4">
-              <div className="max-w-xs mx-auto text-center">
-                {getIcon('Address')}
-                <h3 className="mb-3 text-2xl md:text-3xl font-bold leading-9 text-coolGray-900">
-                  Socials
-                </h3>
-                <a className="inline-block mr-8 text-blue-500 hover:text-blue-600" href="#">
-                  <svg
-                    width={10}
-                    height={18}
-                    viewBox="0 0 10 18"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M6.63482 17.7273V9.76603H9.35818L9.76676 6.66246H6.63482V4.68129C6.63482 3.78302 6.88809 3.17086 8.20285 3.17086L9.877 3.17018V0.394245C9.58748 0.357342 8.59366 0.272736 7.43696 0.272736C5.02158 0.272736 3.36797 1.71881 3.36797 4.37392V6.66246H0.636353V9.76603H3.36797V17.7273H6.63482Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </a>
-                <a className="inline-block mr-8 text-blue-500 hover:text-blue-600" href="#">
-                  <svg
-                    width={19}
-                    height={16}
-                    viewBox="0 0 19 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M18.8181 2.14598C18.1356 2.44844 17.4032 2.65356 16.6336 2.74513C17.4194 2.27462 18.0208 1.52831 18.3059 0.641769C17.5689 1.0775 16.7553 1.39389 15.8885 1.56541C15.1943 0.82489 14.2069 0.363647 13.1118 0.363647C11.0108 0.363647 9.30722 2.06719 9.30722 4.16707C9.30722 4.46489 9.34083 4.75577 9.40574 5.03392C6.24434 4.87513 3.44104 3.3605 1.56483 1.05895C1.23686 1.61986 1.05028 2.27344 1.05028 2.9711C1.05028 4.29107 1.72243 5.45574 2.74225 6.13713C2.11877 6.11628 1.53237 5.94477 1.01901 5.65968V5.70719C1.01901 7.5498 2.33086 9.08762 4.07031 9.43762C3.75161 9.52337 3.41555 9.57089 3.06789 9.57089C2.82222 9.57089 2.58464 9.54656 2.35171 9.50019C2.8361 11.0125 4.24068 12.1123 5.90483 12.1424C4.6034 13.1623 2.96243 13.7683 1.1801 13.7683C0.873008 13.7683 0.570523 13.7498 0.272705 13.7162C1.95655 14.7974 3.95561 15.4279 6.10416 15.4279C13.1026 15.4279 16.928 9.63116 16.928 4.60398L16.9153 4.11147C17.6627 3.57834 18.3094 2.90853 18.8181 2.14598Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </a>
-                <a className="inline-block mr-8 text-blue-500 hover:text-blue-600" href="#">
-                  <svg
-                    width={20}
-                    height={20}
-                    viewBox="0 0 24 22"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      clipRule="evenodd"
-                      d="M7.60057 2.18182H16.3991C19.3872 2.18182 21.8182 4.61282 21.8181 7.60075V16.3993C21.8181 19.3872 19.3872 21.8182 16.3991 21.8182H7.60057C4.61264 21.8182 2.18176 19.3873 2.18176 16.3993V7.60075C2.18176 4.61282 4.61264 2.18182 7.60057 2.18182ZM16.3992 20.076C18.4266 20.076 20.076 18.4266 20.076 16.3993H20.0759V7.60075C20.0759 5.57349 18.4265 3.92406 16.3991 3.92406H7.60057C5.57331 3.92406 3.924 5.57349 3.924 7.60075V16.3993C3.924 18.4266 5.57331 20.0761 7.60057 20.076H16.3992ZM6.85709 12.0001C6.85709 9.16424 9.16413 6.85715 11.9999 6.85715C14.8358 6.85715 17.1428 9.16424 17.1428 12.0001C17.1428 14.8359 14.8358 17.1429 11.9999 17.1429C9.16413 17.1429 6.85709 14.8359 6.85709 12.0001ZM8.62792 12C8.62792 13.8593 10.1407 15.3719 11.9999 15.3719C13.8592 15.3719 15.372 13.8593 15.372 12C15.372 10.1406 13.8593 8.62791 11.9999 8.62791C10.1406 8.62791 8.62792 10.1406 8.62792 12Z"
-                      fill="currentColor"
-                    />
-                    <mask
-                      id="mask0_382_5883"
-                      style={{ maskType: 'alpha' }}
-                      maskUnits="userSpaceOnUse"
-                      x={2}
-                      y={2}
-                      width={20}
-                      height={20}
+            <div className="flex flex-wrap -mx-4 pb-16">
+              <div className="w-full md:w-1/4 px-4 mb-10 md:mb-0">
+                <div className="max-w-xs mx-auto text-center">
+                  {getIcon('Email')}
+                  <h3 className="mb-2 text-2xl md:text-3xl leading-9 text-coolGray-800 font-bold">
+                    Email
+                  </h3>
+                  <address className="not-italic">
+                    <Link
+                      className="text-xl text-coolGray-500 hover:text-sky-500 font-medium transition-colors duration-200 ease-in-out"
+                      href={`mailto:${email}?subject=${encodeURIComponent(EMAIL_SUBJECT)}&body=${encodeURIComponent(EMAIL_BODY)}`}
                     >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M7.60057 2.18182H16.3991C19.3872 2.18182 21.8182 4.61282 21.8181 7.60075V16.3993C21.8181 19.3872 19.3872 21.8182 16.3991 21.8182H7.60057C4.61264 21.8182 2.18176 19.3873 2.18176 16.3993V7.60075C2.18176 4.61282 4.61264 2.18182 7.60057 2.18182ZM16.3992 20.076C18.4266 20.076 20.076 18.4266 20.076 16.3993H20.0759V7.60075C20.0759 5.57349 18.4265 3.92406 16.3991 3.92406H7.60057C5.57331 3.92406 3.924 5.57349 3.924 7.60075V16.3993C3.924 18.4266 5.57331 20.0761 7.60057 20.076H16.3992ZM6.85709 12.0001C6.85709 9.16424 9.16413 6.85715 11.9999 6.85715C14.8358 6.85715 17.1428 9.16424 17.1428 12.0001C17.1428 14.8359 14.8358 17.1429 11.9999 17.1429C9.16413 17.1429 6.85709 14.8359 6.85709 12.0001ZM8.62792 12C8.62792 13.8593 10.1407 15.3719 11.9999 15.3719C13.8592 15.3719 15.372 13.8593 15.372 12C15.372 10.1406 13.8593 8.62791 11.9999 8.62791C10.1406 8.62791 8.62792 10.1406 8.62792 12Z"
-                        fill="white"
-                      />
-                    </mask>
-                  </svg>
-                </a>
-                <a className="inline-block text-blue-500 hover:text-blue-600" href="#">
-                  <svg
-                    width={18}
-                    height={18}
-                    viewBox="0 0 18 18"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M16.2 0H1.8C0.81 0 0 0.81 0 1.8V16.2C0 17.19 0.81 18 1.8 18H16.2C17.19 18 18 17.19 18 16.2V1.8C18 0.81 17.19 0 16.2 0ZM5.4 15.3H2.7V7.2H5.4V15.3ZM4.05 5.67C3.15 5.67 2.43 4.95 2.43 4.05C2.43 3.15 3.15 2.43 4.05 2.43C4.95 2.43 5.67 3.15 5.67 4.05C5.67 4.95 4.95 5.67 4.05 5.67ZM15.3 15.3H12.6V10.53C12.6 9.81004 11.97 9.18 11.25 9.18C10.53 9.18 9.9 9.81004 9.9 10.53V15.3H7.2V7.2H9.9V8.28C10.35 7.56 11.34 7.02 12.15 7.02C13.86 7.02 15.3 8.46 15.3 10.17V15.3Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </a>
+                      {email}
+                    </Link>
+                  </address>
+                </div>
+              </div>
+              <div className="w-full md:w-1/4 px-4 mb-10 md:mb-0">
+                <div className="max-w-xs mx-auto text-center">
+                  {getIcon('Phone')}
+                  <h3 className="mb-2 text-2xl md:text-3xl leading-9 text-coolGray-800 font-bold">
+                    Телефон
+                  </h3>
+                  <address className="not-italic">
+                    <Link
+                      className="text-xl text-coolGray-500 hover:text-sky-500 font-medium transition-colors duration-200 ease-in-out"
+                      href={`tel:${phone}`}
+                    >
+                      {phone}
+                    </Link>
+                  </address>
+                </div>
+              </div>
+              <div className="w-full md:w-1/4 px-4">
+                <div className="max-w-xs mx-auto text-center">
+                  {getIcon('WhatsApp')}
+                  <h3 className="mb-3 text-2xl md:text-3xl font-bold leading-9 text-coolGray-900">
+                    WhatsApp
+                  </h3>
+                  <address className="not-italic">
+                    <Link
+                      className="text-xl text-coolGray-500 hover:text-sky-500 font-medium transition-colors duration-200 ease-in-out"
+                      href="https://wa.me/77712672155"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Написать в WhatsApp
+                    </Link>
+                  </address>
+                </div>
+              </div>
+              <div className="w-full md:w-1/4 px-4">
+                <div className="max-w-xs mx-auto text-center">
+                  {getIcon('Address')}
+                  <h3 className="mb-3 text-2xl md:text-3xl font-bold leading-9 text-coolGray-900">
+                    Адрес
+                  </h3>
+                  <address className="not-italic">
+                    <BodyText variant="large" text={address} />
+                  </address>
+                </div>
               </div>
             </div>
+            <StrapiImage
+              className="relative mx-auto h-72 md:h-auto -mb-32 md:-mb-80 object-cover"
+              src={image.url}
+              alt={image.alternativeText}
+              width={1712}
+              height={960}
+              priority
+            />
           </div>
-          <img
-            className="relative mx-auto h-72 md:h-auto -mb-32 md:-mb-80 object-cover"
-            src="/images/map.png"
-            alt=""
-          />
-        </div>
-        <div className="py-24 md:py-64 bg-blue-500" />
-      </section>
+          <div className="py-24 md:py-64 bg-blue-500" />
+        </section>
+      </AnimatedSection>
+    </>
+  );
+}
+
+// Utility Component to Render Metadata
+function MetadataRenderer({ metadata }: { metadata: SafeMetadata }) {
+  return (
+    <>
+      <title>{metadata.title}</title>
+      <meta name="description" content={metadata.description} />
     </>
   );
 }

@@ -27,6 +27,7 @@ import {
   EmailIcon,
   PhoneIcon,
   AddressIcon,
+  WhatsAppIcon,
 } from '@/components/common/icons';
 
 export function getIcon(name: string) {
@@ -85,6 +86,8 @@ export function getIcon(name: string) {
       return React.createElement(PhoneIcon);
     case 'Address':
       return React.createElement(AddressIcon);
+    case 'WhatsApp':
+      return React.createElement(WhatsAppIcon);
     default:
       return null;
   }
