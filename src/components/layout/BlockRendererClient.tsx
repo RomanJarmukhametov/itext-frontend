@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
+import React from 'react';
 import Link from 'next/link';
 
 import { BlocksRenderer, type BlocksContent } from '@strapi/blocks-react-renderer';
@@ -57,6 +59,20 @@ export default function BlockRendererClient({ content }: { readonly content: Blo
             </p>
           </blockquote>
         ),
+        list: ({ format, children }) => {
+          if (format === 'ordered') {
+            return (
+              <ol className="list-decimal list-inside pl-4 mb-6 text-base md:text-lg text-coolGray-500">
+                {children}
+              </ol>
+            );
+          }
+          return (
+            <ul className="list-disc list-inside pl-4 mb-6 text-base md:text-lg text-coolGray-500">
+              {children}
+            </ul>
+          );
+        },
       }}
     />
   );

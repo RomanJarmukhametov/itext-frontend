@@ -249,3 +249,13 @@ export async function getContactPageData() {
 
   return await fetchData(url.href);
 }
+
+export async function getTermsOfServiceData() {
+  const url = new URL('/api/terms-of-service-page', baseUrl);
+
+  url.search = qs.stringify({
+    content: true,
+  });
+
+  return await fetchData(url.href);
+}
