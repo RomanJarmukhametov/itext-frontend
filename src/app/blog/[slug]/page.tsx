@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Metadata } from 'next';
 import moment from 'moment';
 import 'moment/locale/ru';
@@ -37,9 +38,46 @@ export default async function SinglePost({ params }: Props) {
   const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${slug}`;
   const postTitle = post.title;
 
+  // Generate JSON-LD structured data
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    image: post.image.url ? `${process.env.NEXT_PUBLIC_SITE_URL}${post.image.url}` : undefined,
+    author: {
+      '@type': 'Person',
+      name: post.author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Бюро переводов iText',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/uploads/itext_logo_0b08b262ae.svg`,
+      },
+    },
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt || post.publishedAt,
+    description: post.description,
+    articleBody: post.content
+      ? post.content.map((block: { text: any }) => block.text).join(' ')
+      : undefined,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': postUrl,
+    },
+  };
+
   return (
     <>
       <MetadataRenderer metadata={metadata as SafeMetadata} />
+
+      {/* Add JSON-LD to the page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <AnimatedSection>
         <section className="py-16 md:py-24 bg-whitebg-pattern-white">
           <div className="container px-4 mx-auto">

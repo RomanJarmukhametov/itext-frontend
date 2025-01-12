@@ -26,12 +26,43 @@ export default async function Contacts() {
     description: description || 'Default Description',
   };
 
+  // JSON-LD for the contact page
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'iText Translation Bureau',
+    url: 'https://itext.agency',
+    logo: 'https://itext.agency/images/logo.png',
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: phone,
+        contactType: 'Customer Service',
+        areaServed: 'KZ',
+        availableLanguage: 'Russian',
+      },
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: address || 'Пл. Победы 25, фоис 106',
+      addressLocality: 'Павлодар',
+      addressRegion: 'Павлодарская область',
+      postalCode: '140000',
+      addressCountry: 'Казахстан',
+    },
+  };
+
   return (
     <>
       <MetadataRenderer metadata={metadata as SafeMetadata} />
 
       <AnimatedSection>
         <section className="pt-20 bg-coolGray-50 bg-pattern-light-one">
+          {/* JSON-LD script tag */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
           <div className="container px-4 mx-auto">
             <div className="max-w-4xl mx-auto mb-16 text-center">
               <Tagline text={pageHeader.tagline} />
