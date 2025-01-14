@@ -207,6 +207,7 @@ export async function getAllBlogPostsData() {
   const url = new URL('/api/posts', baseUrl);
 
   url.search = qs.stringify({
+    sort: ['publishedAt:desc'],
     populate: {
       image: {
         fields: ['url', 'alternativeText'],
