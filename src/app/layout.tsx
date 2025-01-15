@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { GoogleTagManager } from '@next/third-parties/google';
 import { Roboto } from 'next/font/google';
 import '@/assets/styles/globals.css';
 import { getNavigationData } from '@/data/loaders';
@@ -28,6 +29,7 @@ export default async function RootLayout({
 
   return (
     <html lang="ru" className={`${roboto.className} antialiased scroll-smooth`}>
+      <GoogleTagManager gtmId="G-MHN43BWPRX" />
       <body className="flex flex-col min-h-screen">
         <Header navigationData={navigationData.data} />
         <main className="flex-grow">{children}</main>
