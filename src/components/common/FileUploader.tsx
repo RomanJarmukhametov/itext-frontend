@@ -11,7 +11,7 @@ interface FileUploaderProps {
   onFilesUploaded: (uploadedFiles: { id: number }[]) => void; // Define the type for uploaded files
 }
 
-const MAX_TOTAL_FILE_SIZE_MB = 2; // Maximum total file size in MB
+const MAX_TOTAL_FILE_SIZE_MB = 50; // Maximum total file size in MB
 
 export default function FileUploader({}: FileUploaderProps) {
   const [files, setFiles] = useState<File[]>([]);
