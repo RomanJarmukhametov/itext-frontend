@@ -28,7 +28,7 @@ const blockComponents = {
 function blockRenderer(block: any) {
   const Component = blockComponents[block.__component as keyof typeof blockComponents];
   return Component ? (
-    <AnimatedSection key={block.id}>
+    <AnimatedSection key={`${block.__component}-${block.id}`}>
       <Component data={block} />
     </AnimatedSection>
   ) : null;
