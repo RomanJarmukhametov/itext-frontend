@@ -9,8 +9,7 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: strapiUrl.hostname,
-        // protocol: 'https',
-        // hostname: 'growing-talent-a5d264955f.media.strapiapp.com',
+
         // protocol: 'http',
         // hostname: '127.0.0.1',
         // port: '1337',
