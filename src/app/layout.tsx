@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'Бюро переводов iText предлагает профессиональные языковые решения для вашего бизнеса. Мы являемся отраслевыми экспертами и выполняем переводы неизменно высокого качества так быстро, как вам это необходимо, на 50 языков во многих областях знаний. Сэкономьте время и деньги, закажите перевод у нас.',
 };
 
-export const fetchCache = 'force-no-store'; // Disables caching globally
+// export const fetchCache = 'force-no-store'; // Disables caching globally
 
 const roboto = Roboto({
   subsets: ['latin', 'cyrillic-ext', 'greek'],

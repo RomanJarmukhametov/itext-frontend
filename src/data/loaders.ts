@@ -3,27 +3,22 @@ import { getStrapiURL } from '@/lib/utils';
 
 const baseUrl = getStrapiURL();
 
-async function fetchData(
-  url: string,
-  cacheOptions: { cache?: RequestCache; next?: { revalidate?: number } } = {}
-) {
-  const authToken = null; // we will implement this later getAuthToken() later
+async function fetchData(url: string, options: RequestInit = {}) {
   const headers = {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${authToken}`,
     },
-    ...cacheOptions, // Pass caching options
+    ...options,
   };
 
   try {
-    const response = await fetch(url, authToken ? headers : {});
+    const response = await fetch(url, headers);
     const data = await response.json();
     return data;
   } catch (error) {
     console.error('Error fetching data:', error);
-    throw error; // or return null;
+    throw error;
   }
 }
 
@@ -42,7 +37,7 @@ export async function getNavigationData() {
     },
   });
 
-  return await fetchData(url.href, { next: { revalidate: 3600 } });
+  return await fetchData(url.href);
 }
 
 export async function getHomePageData() {
@@ -92,7 +87,7 @@ export async function getHomePageData() {
     },
   });
 
-  return await fetchData(url.href, { next: { revalidate: 60 } }); // Revalidate every minute
+  return await fetchData(url.href);
 }
 
 export async function getAboutPageData() {
@@ -139,7 +134,7 @@ export async function getAboutPageData() {
     },
   });
 
-  return await fetchData(url.href, { next: { revalidate: 120 } }); // Revalidate every 2 minutes
+  return await fetchData(url.href);
 }
 
 export async function getServicesPageData() {
@@ -192,7 +187,7 @@ export async function getServicesPageData() {
     },
   });
 
-  return await fetchData(url.href, { next: { revalidate: 300 } }); // Revalidate every 5 minutes
+  return await fetchData(url.href);
 }
 
 export async function getBlogPageData() {
@@ -204,7 +199,7 @@ export async function getBlogPageData() {
     },
   });
 
-  return await fetchData(url.href, { next: { revalidate: 600 } }); // Revalidate every 10 minutes
+  return await fetchData(url.href);
 }
 
 export async function getAllBlogPostsData() {
@@ -219,7 +214,7 @@ export async function getAllBlogPostsData() {
     },
   });
 
-  return await fetchData(url.href, { cache: 'no-store' }); // No cache for dynamic blog posts
+  return await fetchData(url.href, { cache: 'no-store' });
 }
 
 export async function getBlogPostData(slug: string) {
@@ -237,7 +232,7 @@ export async function getBlogPostData(slug: string) {
     content: true,
   });
 
-  return await fetchData(url.href, { cache: 'no-store' }); // No cache for dynamic blog posts
+  return await fetchData(url.href, { cache: 'no-store' });
 }
 
 export async function getContactPageData() {
@@ -252,7 +247,7 @@ export async function getContactPageData() {
     },
   });
 
-  return await fetchData(url.href, { next: { revalidate: 3600 } }); // Revalidate every hour
+  return await fetchData(url.href);
 }
 
 export async function getTermsOfServiceData() {
