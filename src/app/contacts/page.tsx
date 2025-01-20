@@ -30,9 +30,9 @@ export default async function Contacts() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'iText Translation Bureau',
+    name: 'Бюро переводов iText',
     url: 'https://itext.agency',
-    logo: 'https://itext.agency/images/logo.png',
+    logo: 'https://growing-talent-a5d264955f.media.strapiapp.com/itext_logo_0b08b262ae.svg',
     contactPoint: [
       {
         '@type': 'ContactPoint',
