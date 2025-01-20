@@ -44,11 +44,11 @@ export default async function Contacts() {
     ],
     address: {
       '@type': 'PostalAddress',
-      streetAddress: address || 'Пл. Победы 25, фоис 106',
+      streetAddress: address || 'Пл. Победы 25, офис 106',
       addressLocality: 'Павлодар',
       addressRegion: 'Павлодарская область',
       postalCode: '140000',
-      addressCountry: 'Казахстан',
+      addressCountry: 'KZ',
     },
   };
 
