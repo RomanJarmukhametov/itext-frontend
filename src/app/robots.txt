@@ -5,3 +5,6 @@ Disallow: /admin/
 Disallow: /api/
 
 Sitemap: https://www.itext.agency/sitemap.xml
+
+User-agent: AdsBot-Google
+Allow: /
