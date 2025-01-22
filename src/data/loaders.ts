@@ -87,7 +87,7 @@ export async function getHomePageData() {
     },
   });
 
-  return await fetchData(url.href);
+  return await fetchData(url.href, { cache: 'no-store' });
 }
 
 export async function getAboutPageData() {
