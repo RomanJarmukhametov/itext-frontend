@@ -26,23 +26,21 @@ export default async function Blog() {
     <>
       <MetadataRenderer metadata={metadata as SafeMetadata} />
 
-      <AnimatedSection>
-        <section className="py-24 bg-white bg-pattern-white">
-          <div className="container px-4 mx-auto">
-            <div className="md:max-w-5xl mx-auto mb-8 md:mb-16 text-center">
-              {blogPageHeader && (
-                <>
-                  <Tagline text={blogPageHeader.tagline} />
-                  <Heading level={1}>{blogPageHeader.title}</Heading>
-                  <BodyText variant="large" text={blogPageHeader.description} />
-                </>
-              )}
-            </div>
-
-            <BlogPageContent />
+      <section className="py-24 bg-white bg-pattern-white">
+        <div className="container px-4 mx-auto">
+          <div className="md:max-w-5xl mx-auto mb-8 md:mb-16 text-center">
+            {blogPageHeader && (
+              <>
+                <Tagline text={blogPageHeader.tagline} />
+                <Heading level={1}>{blogPageHeader.title}</Heading>
+                <BodyText variant="large" text={blogPageHeader.description} />
+              </>
+            )}
           </div>
-        </section>
-      </AnimatedSection>
+
+          <BlogPageContent />
+        </div>
+      </section>
 
       <AnimatedSection>
         <Subscribe />
