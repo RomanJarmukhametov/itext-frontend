@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'growing-talent-a5d264955f.media.strapiapp.com',
+        hostname: 'content.itext.kz',
         // protocol: 'http',
         // hostname: '127.0.0.1',
         // port: '1337',

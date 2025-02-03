@@ -35,7 +35,7 @@ export default async function SinglePost({ params }: Props) {
     description: post.description || 'Default Description',
   };
 
-  const postUrl = `https://www.itext.agency/blog/${slug}`;
+  const postUrl = `https://www.itext.kz/blog/${slug}`;
   const postTitle = post.title;
 
   // Generate JSON-LD structured data
@@ -43,9 +43,7 @@ export default async function SinglePost({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
-    image: post.image.url
-      ? `https://growing-talent-a5d264955f.media.strapiapp.com${post.image.url}`
-      : undefined,
+    image: post.image.url ? `https://content.itext.kz${post.image.url}` : undefined,
     author: {
       '@type': 'Person',
       name: post.author,
@@ -55,7 +53,7 @@ export default async function SinglePost({ params }: Props) {
       name: 'Бюро переводов iText',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://growing-talent-a5d264955f.media.strapiapp.com/itext_logo_0b08b262ae.svg',
+        url: 'https://content.itext.kz/uploads/itext_logo_04b4444084.svg',
       },
     },
     datePublished: post.publishedAt,

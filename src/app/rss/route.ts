@@ -13,8 +13,8 @@ export async function GET() {
     const feed = new RSS({
       title: 'iText Blog',
       description: 'Последние посты блога бюро переводов iText.',
-      feed_url: 'https://www.itext.agency/rss.xml',
-      site_url: 'https://www.itext.agency',
+      feed_url: 'https://www.itext.kz/rss.xml',
+      site_url: 'https://www.itext.kz',
       language: 'ru', // Specify Russian language
       pubDate: new Date().toUTCString(),
     });
@@ -25,7 +25,7 @@ export async function GET() {
       feed.item({
         title: title,
         description: subtitle,
-        url: `https://www.itext.agency/blog/${slug}`,
+        url: `https://www.itext.kz/blog/${slug}`,
         guid: slug,
         date: publishedAt,
         enclosure: image?.url
