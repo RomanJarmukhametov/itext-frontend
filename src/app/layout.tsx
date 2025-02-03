@@ -27,9 +27,6 @@ export default async function RootLayout({
 }>) {
   const navigationData = await getNavigationData();
 
-  // Use the environment variable
-  const gaId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || '';
-
   return (
     <html
       lang="ru"
@@ -37,7 +34,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="flex flex-col min-h-screen">
-        <GoogleAnalytics gaId={gaId} />
+        <GoogleAnalytics gaId="G-G654EDT6P0" />
         <Header navigationData={navigationData.data} />
         <main className="flex-grow">{children}</main>
         <Footer navigationData={navigationData.data} />
