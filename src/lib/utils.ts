@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 // This function returns the URL of the Strapi API.
 export function getStrapiURL() {
   // return process.env.NEXT_PUBLIC_STRAPI_URL ?? 'http://127.0.0.1:1337';
-  return process.env.STRAPI_URL ?? 'http://127.0.0.1:1337';
+  return process.env.STRAPI_URL ?? 'https://content.itext.kz';
 }
 
 // This function is designed to process media URLs from the Strapi CMS.

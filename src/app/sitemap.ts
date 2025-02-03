@@ -2,7 +2,7 @@
 import { getAllBlogPostsData } from '@/data/loaders';
 
 export default async function sitemap() {
-  const siteUrl = 'https://www.itext.agency';
+  const siteUrl = 'https://www.itext.kz';
 
   const staticRoutes = [
     { path: '/', priority: 1.0 },

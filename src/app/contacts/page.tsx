@@ -31,8 +31,8 @@ export default async function Contacts() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Бюро переводов iText',
-    url: 'https://itext.agency',
-    logo: 'https://growing-talent-a5d264955f.media.strapiapp.com/itext_logo_0b08b262ae.svg',
+    url: 'https://itext.kz',
+    logo: 'https://content.itext.kz/uploads/itext_logo_04b4444084.svg',
     contactPoint: [
       {
         '@type': 'ContactPoint',
