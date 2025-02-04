@@ -34,7 +34,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="flex flex-col min-h-screen">
-        <GoogleAnalytics gaId="G-G654EDT6P0" />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || 'default-ga-id'} />
         <Header navigationData={navigationData.data} />
         <main className="flex-grow">{children}</main>
         <Footer navigationData={navigationData.data} />
