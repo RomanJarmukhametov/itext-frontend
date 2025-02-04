@@ -19,6 +19,9 @@ export async function GET() {
       pubDate: new Date().toUTCString(),
     });
 
+    // Base URL for Strapi content images
+    const strapiBaseURL = 'https://content.itext.kz';
+
     // Add each blog post to the RSS feed
     blogPosts.forEach((post: any) => {
       const { title, subtitle, slug, image, publishedAt } = post;
@@ -30,7 +33,7 @@ export async function GET() {
         date: publishedAt,
         enclosure: image?.url
           ? {
-              url: image.url,
+                url: `${strapiBaseURL}${image.url}`,
               type: 'image/jpeg',
             }
           : undefined,
