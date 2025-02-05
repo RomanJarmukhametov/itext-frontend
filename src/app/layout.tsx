@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Roboto } from 'next/font/google';
 import '@/assets/styles/globals.css';
 import { getNavigationData } from '@/data/loaders';
@@ -37,6 +38,7 @@ export default async function RootLayout({
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || 'default-ga-id'} />
         <Header navigationData={navigationData.data} />
         <main className="flex-grow">{children}</main>
+        <SpeedInsights />
         <Footer navigationData={navigationData.data} />
         <ToastContainer />
       </body>
