@@ -101,7 +101,7 @@ export default async function SinglePost({ params }: Props) {
               src={post.image.url}
               alt={post.image.alternativeText}
               width={1200}
-              height={800}
+              height={686}
               priority
               className="w-full h-auto rounded-lg"
             />
